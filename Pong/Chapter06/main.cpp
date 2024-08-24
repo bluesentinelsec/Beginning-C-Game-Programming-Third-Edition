@@ -1,13 +1,13 @@
 #include "Bat.h"
-#include <sstream>
-#include <cstdlib>
 #include <SFML/Graphics.hpp>
+#include <cstdlib>
+#include <sstream>
 int main()
 {
     // Create a video mode object
     VideoMode vm(1920, 1080);
     // Create and open a window for the game
-    RenderWindow window(vm, "Pong", Style::Fullscreen);
+    RenderWindow window(vm, "Pong", Style::Default);
     int score = 0;
     int lives = 3;
 
@@ -66,7 +66,6 @@ int main()
             bat.stopRight();
         }
 
-
         /*
         Update the bat, the ball and the HUD
         *****************************
@@ -81,7 +80,6 @@ int main()
         ss << "Score:" << score << "  Lives:" << lives;
         hud.setString(ss.str());
 
-
         /*
         Draw the bat, the ball and the HUD
         *****************************
@@ -92,9 +90,6 @@ int main()
         window.draw(hud);
         window.draw(bat.getShape());
         window.display();
-
-
-
     }
     return 0;
 }

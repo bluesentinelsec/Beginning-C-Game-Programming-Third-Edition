@@ -1,6 +1,6 @@
 #include "Bat.h"
 
-// This the constructor and it is called 
+// This the constructor and it is called
 // when we create an object
 Bat::Bat(float startX, float startY) : m_Position(startX, startY)
 {
@@ -34,10 +34,12 @@ void Bat::stopRight()
 }
 void Bat::update(Time dt)
 {
-    if (m_MovingLeft) {
+    if (m_MovingLeft)
+    {
         m_Position.x -= m_Speed * dt.asSeconds();
     }
-    if (m_MovingRight) {
+    if (m_MovingRight)
+    {
         m_Position.x += m_Speed * dt.asSeconds();
     }
     m_Shape.setPosition(m_Position);
