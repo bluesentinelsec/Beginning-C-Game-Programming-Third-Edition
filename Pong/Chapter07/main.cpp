@@ -1,19 +1,19 @@
-#include "Bat.h"
-#include <sstream>
-#include <cstdlib>
-#include <SFML/Graphics.hpp>
 #include "Ball.h"
+#include "Bat.h"
+#include <SFML/Graphics.hpp>
+#include <cstdlib>
+#include <sstream>
 int main()
 {
     // Create a video mode object
     VideoMode vm(1920, 1080);
     // Create and open a window for the game
-    RenderWindow window(vm, "Pong", Style::Fullscreen);
+    RenderWindow window(vm, "Pong", Style::Default);
     int score = 0;
     int lives = 3;
 
     // Create a bat at the bottom center of the screen
-    Bat bat(1920 / 2, 1080 - 20);
+    Bat bat(1920 / 2, 1080 - 90);
     // We will add a ball in the next chapter
     Ball ball(1920 / 2, 0);
     // Create a Text object called HUD
@@ -68,7 +68,6 @@ int main()
             bat.stopRight();
         }
 
-
         /*
         Update the bat, the ball and the HUD
         *****************************
@@ -92,7 +91,8 @@ int main()
             // Remove a life
             lives--;
             // Check for zero lives
-            if (lives < 1) {
+            if (lives < 1)
+            {
                 // reset the score
                 score = 0;
                 // reset the lives
@@ -101,8 +101,7 @@ int main()
         }
 
         // Handle ball hitting sides
-        if (ball.getPosition().left < 0 ||
-            ball.getPosition().left + ball.getPosition().width> window.getSize().x)
+        if (ball.getPosition().left < 0 || ball.getPosition().left + ball.getPosition().width > window.getSize().x)
         {
             ball.reboundSides();
         }
@@ -113,7 +112,6 @@ int main()
             // Hit detected so reverse the ball and score a point
             ball.reboundBatOrTop();
         }
-
 
         /*
         Draw the bat, the ball and the HUD
@@ -126,9 +124,6 @@ int main()
         window.draw(bat.getShape());
         window.draw(ball.getShape());
         window.display();
-
-
-
     }
     return 0;
 }
